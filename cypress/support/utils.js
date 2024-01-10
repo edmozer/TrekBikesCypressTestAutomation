@@ -9,7 +9,7 @@ function randomEmail () {
 }
 
 const randomUserName = () => {
-    return faker.person.firstName().toLowerCase();
+    return faker.person.firstName();
 }
 
 const randomPassword = () => {

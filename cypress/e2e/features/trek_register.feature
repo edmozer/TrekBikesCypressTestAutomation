@@ -3,4 +3,4 @@ Feature: Register
     Scenario: 01 - Success register
         Given the trek register page is loaded
         When the user enters correct values to the fields and clicks on create new account
-        Then the new user should be registered
+        Then the new user should be registered "Thank you for registering. Please check your email to finish setting up your account."

@@ -1,40 +1,46 @@
 /// <reference types="cypress" />
-const { set, click, get_text } = require('../actions.js');
 let el = require('../elements/trekRegisterElements').TrekRegisterElements
+const { set, click, scrollTo, get_text} = require('../actions.js')
 
 
 class Register {
 
   accessRegisterPage() {
     cy.visit(el.urlTrekRegister);
-
-}
+  }
 
   fillNameField(name){
+    click(el.btnCloser);
     name && set(el.firstNameField, name);
   }
 
-  fillLastNameField(){
-    cy.get(el.lastNameField).type("Testador");
+  fillLastNameField(lastName){
+    lastName && set(el.lastNameField, lastName);
   }
   
   fillEmailField(email){
     email && set(el.emailField, email);
   }
-  fillPasswordField(){
-        cy.get(el.passwordField).type("Testador123!");
+
+  fillPasswordField(password){
+    set(el.passwordField, password);
   }
+
   fillPasswordConfirmationField(){
-    cy.get(el.confirmPasswordField).type("Testador123!");
+    set(el.confirmPasswordField, "Testador123!");
   }
+
   checkAgreeBox(){
-    cy.get(el.agreeBox).click();
+    scrollTo(el.confirmPasswordField);
+    click(el.agreeBox);
   }
+
   clickCreateButton(){
-    cy.get(el.createButton).click();
+    click(el.createButton);
   }
+
   checkAlert(){
-    cy.contains(el.registerUserAlert, 'Thank you for registering');
+    return get_text(el.registerUserAlert);
   }
 
 }
