@@ -2,6 +2,7 @@
 const { set, click, get_text } = require('../actions.js');
 let el = require('../elements/trekRegisterElements').TrekRegisterElements
 
+
 class Register {
 
   accessRegisterPage() {
@@ -9,16 +10,16 @@ class Register {
 
 }
 
-  fillNameField(){
-    cy.get(el.firstNameField).type("teste");
+  fillNameField(name){
+    name && set(el.firstNameField, name);
   }
 
   fillLastNameField(){
-    cy.get(el.lastNameField).type("testador");
+    cy.get(el.lastNameField).type("Testador");
   }
   
-  fillEmailField(){
-    cy.get(el.emailField).type("testador123@teste.com")
+  fillEmailField(email){
+    email && set(el.emailField, email);
   }
   fillPasswordField(){
         cy.get(el.passwordField).type("Testador123!");
@@ -31,6 +32,9 @@ class Register {
   }
   clickCreateButton(){
     cy.get(el.createButton).click();
+  }
+  checkAlert(){
+    cy.contains(el.registerUserAlert, 'Thank you for registering');
   }
 
 }
