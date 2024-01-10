@@ -64,18 +64,29 @@ function clear(el) {
     return clear;
 }
 
-function get_text(el, text) {
+function get_text(el) {
     waitElement(el)
     try {
-        cy.get(el).contains(text);
+        text = cy.get(el);
         cy.log('Encontrou o ' + el + ' com o texto ' + text)
     } catch (error) {
         cy.log('Exceção capturada: ' + error.message);
     }
-    return get_text;
+    return text;
+}
+
+function scrollTo(el) {
+    waitElement(el)
+    try {
+        cy.get(el).scrollIntoView();
+        cy.log('Visualizou o Elemento ' + el)
+    } catch (error) {
+        cy.log('Exceção capturada: ' + error.message);
+    }
+    return clear;
 }
 
 
 module.exports = {
-    set, click, waitElement, waitElement_index, click_index, clear, get_text
+    set, click, waitElement, waitElement_index, click_index, clear, get_text, scrollTo
 };
