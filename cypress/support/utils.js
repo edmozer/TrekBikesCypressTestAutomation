@@ -16,6 +16,18 @@ const randomPassword = () => {
     return  faker.number.int({ min: 10000000, max: 99999999 });
 }
 
+const cancelCallAPI = () => {
+    const app = window.top;
+        if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+    const style = app.document.createElement('style');
+        style.innerHTML =
+            '.command-name-request, .command-name-xhr { display: none }';
+        style.setAttribute('data-hide-command-log-request', '');
+        app.document.head.appendChild(style);
+}
+
+}
+
 module.exports = {
-    randomName, randomEmail, randomUserName, randomPassword
+    randomName, randomEmail, randomUserName, randomPassword, cancelCallAPI
 };
