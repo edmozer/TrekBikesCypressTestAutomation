@@ -8,5 +8,6 @@ export const TrekRegisterElements = {
     confirmPasswordField: '#registerPasswordConfirmation',
     agreeBox: ':nth-child(8) > .form-fieldset > div > .checkbox > .control-indicator',
     createButton: '.max-w-sm > form > .button',
-    registerUserAlert: '.text-md span'
+    registerUserAlert: '.text-md span',
+    messageError: '.is-invalid'
 }

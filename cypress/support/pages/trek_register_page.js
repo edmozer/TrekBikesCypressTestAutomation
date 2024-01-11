@@ -7,10 +7,12 @@ class Register {
 
   accessRegisterPage() {
     cy.visit(el.urlTrekRegister);
+    click(el.btnCloser);
+    scrollTo(el.createButton);
   }
 
   fillNameField(name){
-    click(el.btnCloser);
+    
     name && set(el.firstNameField, name);
   }
 
@@ -26,12 +28,11 @@ class Register {
     set(el.passwordField, password);
   }
 
-  fillPasswordConfirmationField(){
-    set(el.confirmPasswordField, "Testador123!");
+  fillPasswordConfirmationField(confirmationPassword){
+    set(el.confirmPasswordField, confirmationPassword);
   }
 
   checkAgreeBox(){
-    scrollTo(el.confirmPasswordField);
     click(el.agreeBox);
   }
 
@@ -41,6 +42,10 @@ class Register {
 
   checkAlert(){
     return get_text(el.registerUserAlert);
+  }
+
+  checkAlertMessage(){
+    return  get_text(el.messageError);
   }
 
 }
