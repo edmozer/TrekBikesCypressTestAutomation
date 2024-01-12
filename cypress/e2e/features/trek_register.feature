@@ -33,5 +33,5 @@ Feature: Register
     @passwordNotSame
     Scenario: 06 - Passwords are not the same
         Given the trek register page is loaded
-        When the user not fills different Password
+        When the user fills differents Password
         Then the user will see the message "The Confirm password confirmation does not match"
